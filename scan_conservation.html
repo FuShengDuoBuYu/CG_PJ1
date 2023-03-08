@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<style type="text/css" media="screen">
+    @import url("./scan_conservation.css");
+</style>
+<script type="text/javascript" src="./config.js"></script>
+<script type="text/javascript" src="./scan_conservation.js"></script>
+<head>
+    <title>PJ1_郭仲天_19307110250</title>    
+</head>
+<body>
+    <p align="center">
+        PJ1_郭仲天_19307110250
+    </p>
+    <div align="center">
+        <canvas id="scan_conversion_canvas" class="canvas"></canvas>
+    </div>
+    <script>
+        let canvas = document.getElementById("scan_conversion_canvas");
+        canvas.width = canvas_size.maxX;
+        canvas.height = canvas_size.maxY;
+        let cxt = canvas.getContext("2d");
+        cxt.translate(0.5, 0.5);
+        for(i = 0;i < vertex_pos.length;i++){
+            let color = [vertex_pos[i][0]%255,vertex_pos[i][1]%255,0];
+            drawPoint(cxt,vertex_pos[i][0],vertex_pos[i][1],color);
+        }
+    </script>
+</body>
+</html>
