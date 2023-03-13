@@ -17,14 +17,13 @@
     </div>
     <script>
         let canvas = document.getElementById("scan_conversion_canvas");
-        canvas.width = canvas_size.maxX;
-        canvas.height = canvas_size.maxY;
-        let cxt = canvas.getContext("2d");
+        let cxt = initCanvas(canvas,canvas_size.maxX,canvas_size.maxY);
         cxt.translate(0.5, 0.5);
-        for(i = 0;i < vertex_pos.length;i++){
-            let color = [vertex_pos[i][0]%255,vertex_pos[i][1]%255,0];
-            drawPoint(cxt,vertex_pos[i][0],vertex_pos[i][1],color);
-        }
+        mouseDownAndMove(canvas,function(e){
+            updateVertexPos(index,e.offsetX,e.offsetY);
+            refreshCanvas(cxt);
+        });
+        drawCanvas(cxt,vertex_pos,vertex_radius,vertex_color);
     </script>
 </body>
 </html>
